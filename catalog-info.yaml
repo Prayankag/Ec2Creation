@@ -1,0 +1,44 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: Ec2_Terraform
+  description: To test creation of Ec2 using terraform code
+spec:
+  owner: group:default/prayankag
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: Ec2_Terraform
+  description: To test creation of Ec2 using terraform code
+  annotations:
+     backstage.io/techdocs-ref: dir:./docs
+     github.com/project-slug: Prayankag/Ec2Creation
+     github-actions: enabled
+     github.com/workflows: |
+      [
+        {
+          "workflow": "instance.yaml",
+          "label": "Start",
+          "tooltip": "click here and start the workflow process"
+        }
+      ]
+spec:
+  type: service
+  owner: group:default/prayankag
+  lifecycle: experimental
+  system: Ec2_Terraform
+  providesApis:
+    - Ec2_Terraform
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: Ec2_Terraform
+  description: To test creation of Ec2 using terraform code
+spec:
+  type: internal
+  lifecycle: experimental
+  owner: group:default/prayankag
+  system: Ec2_Terraform
+  definition: "To test creation of Ec2 using terraform code"
